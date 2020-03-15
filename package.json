@@ -43,6 +43,9 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
-    "typescript": "~3.2.2"
+    "typescript": "~3.2.2",
+    "rimraf": "^3.0.0",
+    "serverless-dotenv-plugin": "^2.1.1",
+    "serverless-single-page-app-plugin": "file:./serverless/single-page-app-plugin"
   }
 }

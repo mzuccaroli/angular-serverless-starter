@@ -1,5 +1,14 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+# serverless
+.serverless
+
+# plugin min files
+/src/editor-plugins/page-end/plugin.min.js
+
+# compodoc generated documentation
+/documentation
+
 # compiled output
 /dist
 /tmp
@@ -24,11 +33,7 @@ speed-measure-plugin.json
 *.sublime-workspace
 
 # IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+/.vscode
 .history/*
 
 # misc
