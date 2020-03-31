@@ -7,8 +7,8 @@ plugins:
   - serverless-dotenv-plugin
 
 custom:
-  s3Bucket: attofacile-frontend-${env:STAGE}
-  distFolder: dist/attofacile-frontend
+  s3Bucket: angular-serverless-starter-${env:STAGE}
+  distFolder: dist/angular-serverless-starter
   dotenv:
     basePath: src/environments/
 
