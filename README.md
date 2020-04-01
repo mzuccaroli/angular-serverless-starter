@@ -1,50 +1,12 @@
 # AngularServerlessStarter
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
 
-## Development server
+This project demonstrates how to setup a an Angular application and deploy it on AWS via serverless, is based on [this serverless example single palge app example](https://github.com/serverless/examples/tree/master/aws-node-single-page-app-via-cloudfront).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
-_____________________________________________
-_____________________________________________
-
-<!--
-title: 'AWS Single Page Application example in NodeJS'
-description: 'This example demonstrates how to setup a Single Page Application.'
-layout: Doc
-framework: v1
-platform: AWS
-language: nodeJS
-authorLink: 'https://github.com/erezrokah'
-authorName: 'Erez Rokah'
-authorAvatar: 'https://avatars0.githubusercontent.com/u/26760571?v=4&s=140'
--->
-# Single Page Application
-
-This example demonstrates how to setup a Single Page Application. Our goals here are to serve a static page with low latency. One additional goal is to make sure the client side application can leverage the History API functions `pushState` and `replaceState` to change the current URL without reloading. Further we want to make sure all the content is only served via HTTPS. HTTP requests should get redirected to HTTPS.
+Our goals here are to build deploy and serve and Angular application on AWS with low latency using Serverless framework.
 
 To achieve these goals we use S3 in combination with CloudFront. S3 is used to store our static HTML file while CloudFront is responsible for making it available via Amazon's Content Delivery Network.
+
 
 ## Prerequisite
 
@@ -54,7 +16,7 @@ The `serverless-single-page-app-plugin` in this example requires the Serverless 
 
 ## Setup
 
-Replace the bucket name in `serverless.yaml` which you can find inside the `custom` section. There is a placeholder text `yourBucketName123`. This is due the fact that bucket names must be globally unique across all AWS S3 buckets.
+Replace the bucket name in `serverless.yaml` which you can find inside the `custom` section. There is a placeholder text `angular-serverless-starter`. This is due the fact that bucket names must be globally unique across all AWS S3 buckets. 
 
 Since this plugin uses a custom Serverless plugin you need to setup the `node_modules` by running:
 
@@ -64,7 +26,25 @@ npm install
 
 The `serverless-single-page-app-plugin` plugin in this example is there to simplify the experience using this example. It's not necessary to understand the plugin to deploy your Single Page Application.
 
-# Deploy
+
+## Development server
+
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## Code scaffolding
+
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+
+
+
+
+# Build & deploy
+
+## Build 
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+## Deploy
 
 Warning: Whenever you making changes to CloudFront resource in `serverless.yml` the deployment might take a while e.g 20 minutes.
 
@@ -129,7 +109,7 @@ Visit the printed domain domain and navigate on the web site. It should automati
 
 This is how it should look like: ![Screenshot](https://cloud.githubusercontent.com/assets/223045/20391786/287cb3acd5-11e6-9eaf-89f641ed9e14.png)
 
-# Re-deploying
+## Re-deploying
 
 If you make changes to your Single Page Application you might need to invalidate CloudFront's cache to make sure new files are served.
 Meaning, run:
@@ -144,11 +124,14 @@ To sync your files and then:
 serverless invalidateCloudFrontCache
 ```
 
-## Further Improvements
+# Test
 
-Here a list of potential improvements you can do with your CloudFront setup depending on your use-case:
+## Running unit tests
 
-- Setup a custom domain alias
-- Logging for CloudFront requests
-- Setup a restriction so the Bucket is not publicly accessible except via CloudFront
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
 
